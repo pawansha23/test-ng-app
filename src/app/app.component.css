@@ -262,6 +262,15 @@
     width: 1920px;
   }
 
+  .successMsg{
+    margin-top: 10px;
+    background-color: greenyellow;
+    padding: 10px 20px;
+    color: #24292e;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,

@@ -10,6 +10,7 @@ import { RESTAPIService } from './service/restapiservice.service';
 })
 export class AppComponent {
   title = 'test-ng-app';
+  showSuccessMsg = false;
 
   persons : any[]=[];
   pname: any = '';
@@ -20,6 +21,7 @@ export class AppComponent {
   }
 
   getPersons() {
+    this.showSuccessMsg = false;
     this.service.getPersons().subscribe( data => {
       console.log("data is fetched from DB");
       this.persons = data;
@@ -34,11 +36,13 @@ export class AppComponent {
   
       this.service.addPerson(person).subscribe( data=>{
         console.log('record saved in DB',data);
+        this.showSuccessMsg = true;
       });
   }
 
   clear(){
     this.persons = [];
+    this.showSuccessMsg = false;
   }
 
 }

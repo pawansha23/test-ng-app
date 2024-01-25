@@ -42,6 +42,10 @@
     </table>
   </form>
 
+  <div *ngIf="showSuccessMsg" class="successMsg">
+    Your data is saved successfully !!!
+  </div>
+
   <button (click)="getPersons()">Get All Persons</button><button (click)="clear()">Clear Records</button>
   <hr>
 
