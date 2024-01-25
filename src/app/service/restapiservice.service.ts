@@ -28,4 +28,8 @@ export class RESTAPIService {
     return this.http.post(this.url, blog, this.httpOptions);
   }
 
+  deletePerson(id:any){
+    return this.http.delete<any[]>(this.url+"/"+id);
+  }
+
 }
