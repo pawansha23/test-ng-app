@@ -15,10 +15,10 @@ export class RESTAPIService {
   };
   
   // render BE url
-  url = "https://sb-postgres.onrender.com/persons";
+  // url = "https://sb-postgres.onrender.com/persons";
 
    // local BE url
-   //url = "http://localhost:8080/persons";
+   url = "http://localhost:8080/persons";
 
   getPersons() {
     return this.http.get<any[]>(this.url);

@@ -11,6 +11,8 @@ import { RESTAPIService } from './service/restapiservice.service';
 export class AppComponent {
   title = 'test-ng-app';
   showSuccessMsg = false;
+  isDataPresent = false;
+  isDisabled: boolean = true;
 
   persons : any[]=[];
   pname: any = '';
@@ -24,7 +26,10 @@ export class AppComponent {
     this.showSuccessMsg = false;
     this.service.getPersons().subscribe( data => {
       console.log("data is fetched from DB");
-      this.persons = data;
+      if(data){
+        this.persons = data;
+        this.isDataPresent = true;
+      }
       data.forEach(element => {
         console.log('id = '+element.id+" , name = "+element.name);
       });
@@ -33,7 +38,7 @@ export class AppComponent {
 
   addPerson(){
       let person = { name:this.pname };
-  
+    
       this.service.addPerson(person).subscribe( data=>{
         console.log('record saved in DB',data);
         this.showSuccessMsg = true;
@@ -43,6 +48,18 @@ export class AppComponent {
   clear(){
     this.persons = [];
     this.showSuccessMsg = false;
+    this.isDataPresent = false;
+  }
+
+  onUserInput(event:any){
+    // Get the input text
+    let inputText = event.target.value;
+    if(inputText==''){
+      this.isDisabled = true;  // Make button disabled
+    }
+    else{
+      this.isDisabled = false; // Make button enabled
+    }
   }
 
 }

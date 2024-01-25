@@ -32,11 +32,11 @@
       </tr>
       <tr>
         <td><label>Enter Name</label></td>
-        <td><input type="text" name="pname" [(ngModel)]="pname" placeholder="Enter Person Name"></td>
+        <td><input type="text" name="pname" [(ngModel)]="pname" placeholder="Enter Person Name" (input)="onUserInput($event)"></td>
       </tr>
       <tr>
         <td align="center" colspan="4">
-          <button type="submit" value="Submit" (click)="addPerson()">Add Person</button>
+          <button [disabled]="isDisabled" type="submit" value="Submit" (click)="addPerson()">Add Person</button>
         </td>
       </tr>
     </table>
@@ -49,7 +49,7 @@
   <button (click)="getPersons()">Get All Persons</button><button (click)="clear()">Clear Records</button>
   <hr>
 
-  <table class="table table-striped" border="1">
+  <table *ngIf="isDataPresent" class="table table-striped" border="1">
     <tr>
       <th>ID</th>
       <th>First Name</th>
